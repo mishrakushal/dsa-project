@@ -18,12 +18,12 @@ class Node {
 		int frequency;
 		Node* left;
 		Node* right;
-		static Node* getNode(Node* left, Node* right, char character, int frequency) {}
+		static Node* getNode(Node* left, Node* right, char character, int frequency);
 };
 
 // remove function because already implement in the class
 // creating new tree nodes
-Node::Node* getNode(Node* left, Node* right, char character, int frequency) {
+Node* Node::getNode(Node* left, Node* right, char character, int frequency) {
 	Node* node = new Node();
 	node->character = character;
 	node->frequency = frequency;
@@ -131,22 +131,34 @@ void generateTree(string inputText) {
 	cout << "The compressed text is:\n" << compressedText << endl;
 
 	// show users the encoding used
-	cout << "The following encoding was used during compression:\n";
+	cout << "\nThe following encoding was used during compression:\n";
 	for (auto pair : encodedMap) {
 		cout << pair.first << "\t:\t" << pair.second << endl;
 	}
 
 	// decode the compressed string
 	// display the decoded string to the user
-	cout << "The decompressed text is:\n";
+	cout << "\nThe decompressed text is:\n";
 	int index = -1;
 	int compressedLength = compressedText.size();
 	while (index < compressedLength - 2) {
 		decode(root, compressedText, index);
 	}
+
+	// show % space saved by the user
+	int originalLength = inputText.size();
+	int encodedSize = encodedMap.size();
+	cout << "\n\nOriginal Length: " << originalLength << endl;
+	cout << "Compressed Length: " << encodedSize << endl;
+	int savedSpace = ((originalLength - encodedSize) * 100) / originalLength;
+	cout << "\nYou saved " << savedSpace << "%" << " space.";
+	
 }
 
 int main() {
-	
+	string inputText;
+	cout << "Enter your text: ";
+	getline(cin, inputText);
+	generateTree(inputText);
 	return 0;
 }
