@@ -89,6 +89,11 @@ void generateTree(string inputText) {
 	// this priority queue will keep track of active nodes
 	priority_queue<Node*, vector<Node*>, compare> activeNodes;
 
+	// generate a leaf node for each character
+	// push this node to the active nodes queue
+	for (auto pair : frequencyMap) {
+		activeNodes.push(Node::getNode(nullptr, nullptr, pair.first, pair.second));
+	}
 }
 
 int main() {
