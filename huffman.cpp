@@ -5,13 +5,6 @@
 
 using namespace std;
 
-// create linked list for nodes
-// struct Node {
-// 	char character;
-// 	int frequency;
-// 	Node *left, *right;
-// };
-
 class Node {
 	public:
 		char character;
