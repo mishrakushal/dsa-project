@@ -84,6 +84,11 @@ void generateTree(string inputText) {
 	for (char character : inputText) {
 		frequencyMap[character]++;
 	}
+
+	// create priority queue using the compare struct
+	// this priority queue will keep track of active nodes
+	priority_queue<Node*, vector<Node*>, compare> activeNodes;
+
 }
 
 int main() {
