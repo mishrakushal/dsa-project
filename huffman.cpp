@@ -94,6 +94,23 @@ void generateTree(string inputText) {
 	for (auto pair : frequencyMap) {
 		activeNodes.push(Node::getNode(nullptr, nullptr, pair.first, pair.second));
 	}
+
+	// generate Huffman tree using active nodes
+	// loop through all nodes until they all connect to form a tree
+	// in that case the size of activeNodes will become 1
+	while (!(activeNodes.size() == 1)) {
+		// join the two least occuring characters to a common node
+		Node* left = activeNodes.top();
+		activeNodes.pop();
+		Node* right = activeNodes.top();
+		activeNodes.pop();
+
+		// make the common node frequency as sum of their frequencies
+		int frequencySum = left->frequency + right->frequency;
+
+		// push the common node back to active nodes
+		activeNodes.push(Node::getNode(left, right, '\0', frequencySum));
+	}
 }
 
 int main() {
