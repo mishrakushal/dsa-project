@@ -77,6 +77,7 @@ void decode(Node* root, string encodedString, int& index) {
 		decode (root->right, encodedString, index);
 }
 
+// ----- TREE GENERATION -----
 // function to generate Huffman Tree
 void generateTree(string inputText) {
 	// create map to store frequency of each character
@@ -111,6 +112,14 @@ void generateTree(string inputText) {
 		// push the common node back to active nodes
 		activeNodes.push(Node::getNode(left, right, '\0', frequencySum));
 	}
+
+	// the root will store pointer to top of tree 
+	Node* root = activeNodes.top();
+
+	// traverse the tree and encode the text
+	// store the character and encoded text pair in map
+	unordered_map <char, string> encodedMap;
+	encode(root, "", encodedMap);
 }
 
 int main() {
