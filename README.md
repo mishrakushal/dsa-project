@@ -17,6 +17,12 @@
 
 <br>
 
+## Output:
+
+<img src="https://drive.google.com/uc?export=view&id=14maa2FwfJQKrvE2I4p2_QKtz9eGpCxeV" />
+
+<br>
+
 ## Data Structures Used:
 
 1. Priority Queue
