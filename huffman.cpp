@@ -70,6 +70,8 @@ void decode(Node* root, string encodedString, int& index) {
 		return;
 	}
 
+	index++;
+
 	// if 0 is encountered in traversal, decode along left branches
 	if (encodedString[index] == '0')
 		decode (root->left, encodedString, index);
