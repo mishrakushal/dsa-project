@@ -18,7 +18,7 @@ class Node {
 		int frequency;
 		Node* left;
 		Node* right;
-		Node* getNode(Node* left, Node* right, char character, int frequency) {}
+		static Node* getNode(Node* left, Node* right, char character, int frequency) {}
 };
 
 // remove function because already implement in the class
