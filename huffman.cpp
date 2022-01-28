@@ -120,6 +120,13 @@ void generateTree(string inputText) {
 	// store the character and encoded text pair in map
 	unordered_map <char, string> encodedMap;
 	encode(root, "", encodedMap);
+
+	// print compressed string
+	string compressedText = "";
+	for (char character : inputText) {
+		compressedText += encodedMap[character];
+	}
+	cout << "The compressed text is:\n" << compressedText << endl;
 }
 
 int main() {
