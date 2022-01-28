@@ -128,7 +128,7 @@ void generateTree(string inputText) {
 	for (char character : inputText) {
 		compressedText += encodedMap[character];
 	}
-	cout << "The compressed text is:\n" << compressedText << endl;
+	cout << "The encoded text is:\n" << compressedText << endl;
 
 	// show users the encoding used
 	cout << "\nThe following encoding was used during compression:\n";
@@ -150,7 +150,7 @@ void generateTree(string inputText) {
 	int encodedSize = encodedMap.size();
 	cout << "\n\nOriginal Length: " << originalLength << endl;
 	cout << "Compressed Length: " << encodedSize << endl;
-	int savedSpace = ((originalLength - encodedSize) * 100) / originalLength;
+	float savedSpace = (float)((originalLength - encodedSize) * 100) / originalLength;
 	cout << "\nYou saved " << savedSpace << "%" << " space.";
 	
 }
