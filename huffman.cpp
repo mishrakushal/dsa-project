@@ -59,6 +59,24 @@ void encode(Node* root, string encodedString, unordered_map<char, string>& huffm
 	encode(root->right, encodedString + "1", huffmanTree);
 }
 
+// ----- DECODING STEP -----
+void decode(Node* root, string encodedString, int& index) {
+	// return when pointer reaches beyond terminal leaf
+	if (root == nullptr) return;
+
+	// if pointer reaches terminal node, print character and return
+	if (!(root->left || root->right)) {
+		cout << root->character;
+		return;
+	}
+
+	// if 0 is encountered in traversal, decode along left branches
+	if (encodedString[index] == '0')
+		decode (root->left, encodedString, index);
+	else	// decode along right branches
+		decode (root->right, encodedString, index);
+}
+
 int main() {
 	
 	return 0;
