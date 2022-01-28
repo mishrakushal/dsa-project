@@ -23,6 +23,14 @@ Node* getNode(Node* left, Node* right, char character, int frequency) {
 	return node;
 }
 
+// create minimum STL priority queue of node structure type
+// structure will be used in ordering the heap
+struct compare {  
+	bool operator()(Node* l, Node* r) {
+		return l->frequency > r->frequency;
+	}
+};
+
 int main() {
 	
 	return 0;
