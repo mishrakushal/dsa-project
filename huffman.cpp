@@ -135,6 +135,15 @@ void generateTree(string inputText) {
 	for (auto pair : encodedMap) {
 		cout << pair.first << "\t:\t" << pair.second << endl;
 	}
+
+	// decode the compressed string
+	// display the decoded string to the user
+	cout << "The decompressed text is:\n";
+	int index = -1;
+	int compressedLength = compressedText.size();
+	while (index < compressedLength - 2) {
+		decode(root, compressedText, index);
+	}
 }
 
 int main() {
