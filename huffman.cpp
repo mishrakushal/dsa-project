@@ -77,6 +77,15 @@ void decode(Node* root, string encodedString, int& index) {
 		decode (root->right, encodedString, index);
 }
 
+// function to generate Huffman Tree
+void generateTree(string inputText) {
+	// create map to store frequency of each character
+	unordered_map <char, int> frequency;
+	for (char character : inputText) {
+		frequency[character]++;
+	}
+}
+
 int main() {
 	
 	return 0;
