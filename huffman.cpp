@@ -127,6 +127,12 @@ void generateTree(string inputText) {
 		compressedText += encodedMap[character];
 	}
 	cout << "The compressed text is:\n" << compressedText << endl;
+
+	// show users the encoding used
+	cout << "The following encoding was used during compression:\n";
+	for (auto pair : encodedMap) {
+		cout << pair.first << "\t:\t" << pair.second << endl;
+	}
 }
 
 int main() {
