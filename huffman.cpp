@@ -139,6 +139,24 @@ void generateTree(string inputText) {
 		decode(root, compressedText, index);
 	}
 
+	// try creating compressed file
+	try {
+		// create empty file in same directory as the code
+		ofstream compressedFile;
+		compressedFile.open ("compressed.txt");
+
+		//check if file was successfully opened for writing
+		if (compressedFile.is_open()) {
+			compressedFile << compressedText;
+			compressedFile.close();
+			cout << "\n\nYour file was successfully compressed!";
+		}
+		else cout << "Unable to create compressed file";
+	}
+	catch (const char* message) {
+		cerr << message << endl;
+	}
+
 	// show % space saved by the user
 	int originalLength = inputText.size();
 	int encodedSize = encodedMap.size();
@@ -146,7 +164,6 @@ void generateTree(string inputText) {
 	cout << "Compressed Length: " << encodedSize << endl;
 	float savedSpace = (float)((originalLength - encodedSize) * 100) / originalLength;
 	cout << "\nYou saved " << savedSpace << "%" << " space.";
-	
 }
 
 int main() {
@@ -155,7 +172,7 @@ int main() {
 
 	// terminate program with error if file not found/opened
 	if (!userFile) {
-        cout << "Unable to open file";
+        cout << "Unable to open user file";
         exit(1);
     }
 
