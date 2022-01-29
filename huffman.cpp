@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <queue>
 #include <string>
 #include <unordered_map>
@@ -149,9 +150,25 @@ void generateTree(string inputText) {
 }
 
 int main() {
-	string inputText;
-	cout << "Enter your text: ";
-	getline(cin, inputText);
-	generateTree(inputText);
+	fstream userFile;
+	string userData;
+
+	// terminate program with error if file not found/opened
+	if (!userFile) {
+        cout << "Unable to open file";
+        exit(1);
+    }
+
+	// open user file for READ operation
+	// the program assumes file is store in same directory as itself
+	userFile.open("data.txt",ios::in);
+	
+	if (userFile.is_open()) {
+		while(getline(userFile, userData)) {
+		cout << userData << "\n"; //print the data of the string
+	}
+		userFile.close(); //close the file object.
+	}
+	generateTree(userData);
 	return 0;
 }
