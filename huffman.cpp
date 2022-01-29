@@ -122,7 +122,7 @@ void generateTree(string inputText) {
 	for (char character : inputText) {
 		compressedText += encodedMap[character];
 	}
-	cout << "The encoded text is:\n" << compressedText << endl;
+	cout << "\nThe encoded text is:\n" << compressedText << endl;
 
 	// show users the encoding used
 	cout << "\nThe following encoding was used during compression:\n";
@@ -162,7 +162,8 @@ int main() {
 	// open user file for READ operation
 	// the program assumes file is store in same directory as itself
 	userFile.open("data.txt",ios::in);
-	
+
+	cout << "The data read from file is:" << endl;
 	if (userFile.is_open()) {
 		while(getline(userFile, userData)) {
 		cout << userData << "\n"; //print the data of the string
