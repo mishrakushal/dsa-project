@@ -1,0 +1,5 @@
+*.cpp
+/huffman.exe
+/*.txt
+/.vscode/
+

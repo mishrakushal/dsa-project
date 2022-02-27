@@ -12,12 +12,12 @@ class Node {
 		int frequency;
 		Node* left;
 		Node* right;
-		static Node* getNode(Node* left, Node* right, char character, int frequency);
+		static Node* makeNode(Node* left, Node* right, char character, int frequency);
 };
 
 // remove function because already implement in the class
 // creating new tree nodes
-Node* Node::getNode(Node* left, Node* right, char character, int frequency) {
+Node* Node::makeNode(Node* left, Node* right, char character, int frequency) {
 	Node* node = new Node();
 	node->character = character;
 	node->frequency = frequency;
@@ -89,7 +89,7 @@ void generateTree(string inputText) {
 	// generate a leaf node for each character
 	// push this node to the active nodes queue
 	for (auto pair : frequencyMap) {
-		activeNodes.push(Node::getNode(nullptr, nullptr, pair.first, pair.second));
+		activeNodes.push(Node::makeNode(nullptr, nullptr, pair.first, pair.second));
 	}
 
 	// generate Huffman tree using active nodes
@@ -106,7 +106,7 @@ void generateTree(string inputText) {
 		int frequencySum = left->frequency + right->frequency;
 
 		// push the common node back to active nodes
-		activeNodes.push(Node::getNode(left, right, '\0', frequencySum));
+		activeNodes.push(Node::makeNode(left, right, '\0', frequencySum));
 	}
 
 	// the root will store pointer to top of tree 
@@ -159,11 +159,14 @@ void generateTree(string inputText) {
 
 	// show % space saved by the user
 	int originalLength = inputText.size();
-	int encodedSize = encodedMap.size();
-	cout << "\n\nOriginal Length: " << originalLength << endl;
-	cout << "Compressed Length: " << encodedSize << endl;
-	float savedSpace = (float)((originalLength - encodedSize) * 100) / originalLength;
-	cout << "\nYou saved " << savedSpace << "%" << " space.";
+	originalLength *= (8.0);
+	// int encodedSize = encodedMap.size();
+	float result = float((float)compressedLength / (float)originalLength);
+	cout << "\n\nOriginal Size: " << originalLength << " bits" << endl;
+	cout << "Compressed Size: " << compressedLength << " bits"<< endl;
+	// float savedSpace = (float)((originalLength - encodedSize) * 100) / originalLength;
+	float savedSpace = result;
+	cout << "\nYou saved " << savedSpace * 100.00 << "%" << " space.";
 }
 
 int main() {
