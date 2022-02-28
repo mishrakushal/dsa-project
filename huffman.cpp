@@ -166,7 +166,7 @@ void generateTree(string inputText) {
 	cout << "Compressed Size: " << compressedLength << " bits"<< endl;
 	// float savedSpace = (float)((originalLength - encodedSize) * 100) / originalLength;
 	float savedSpace = result;
-	cout << "\nYou saved " << savedSpace * 100.00 << "%" << " space.";
+	cout << "\nYou saved " << (1 - savedSpace) * 100.00 << "%" << " space.";
 }
 
 int main() {
