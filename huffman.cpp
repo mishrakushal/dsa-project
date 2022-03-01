@@ -173,21 +173,21 @@ int main() {
 	fstream userFile;
 	string userData;
 
+	// open user file for READ operation
+	// the program assumes file is store in same directory as itself
+	userFile.open("data.txt",ios::in);
+
 	// terminate program with error if file not found/opened
 	if (!userFile) {
         cout << "Unable to open user file";
         exit(1);
     }
 
-	// open user file for READ operation
-	// the program assumes file is store in same directory as itself
-	userFile.open("data.txt",ios::in);
-
 	cout << "The data read from file is:" << endl;
 	if (userFile.is_open()) {
 		while(getline(userFile, userData)) {
-		cout << userData << "\n"; //print the data of the string
-	}
+			cout << userData << "\n"; //print the data of the string
+		}
 		userFile.close(); //close the file object.
 	}
 	generateTree(userData);
