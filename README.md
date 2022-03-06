@@ -47,8 +47,6 @@
 
 <br>
 
-- Linked lists are used extensively to generate the Huffman Tree nodes
-
 - Unordered Maps from the STL are utilised in storing the characters and their frequencies
 
 - Priority queue is crucial while generating the Huffman Tree as the algorithm depends on the priority order of the characters
